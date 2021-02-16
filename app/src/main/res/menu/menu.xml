@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_save_score"
+        android:title="Save Game Score" />
+    <item
+        android:id="@+id/item_history"
+        android:title="GameScore History" />
+    <item
+        android:id="@+id/item_exit"
+        android:title="Exit" />
+</menu>

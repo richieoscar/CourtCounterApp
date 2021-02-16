@@ -46,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
 
         bindViews();
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         initializeScore();
         handleIntent();
         clickOptions();
@@ -249,30 +249,6 @@ public class MainActivity extends AppCompatActivity {
         int resetB = viewModel.sumB = 0;
         teamAScore.setText(String.valueOf(resetA));
         teamBScore.setText(String.valueOf(resetB));
-    }
-
-    private void resetGame() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Reset game?");
-        alertDialog = builder.create();
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                alertDialog.dismiss();
-
-            }
-        });
-
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                reset();
-                alertDialog.dismiss();
-
-
-            }
-        });
-        alertDialog.show();
     }
 
 

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,17 +27,20 @@ public class GameScoreHistoryActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     GameScoreHistoryAdapter adapter;
     GameScoreHistoryViewModel viewModel;
+    TextView noHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_score_history);
         recyclerView = findViewById(R.id.soreRv);
+        noHistory = findViewById(R.id.textView_no_history);
         ActionBar ab = getSupportActionBar();
         ab.setTitle("History");
         ab.setDisplayHomeAsUpEnabled(true);
 
         viewModel = new ViewModelProvider(this).get(GameScoreHistoryViewModel.class);
+
         displaySavedGames();
 
 
@@ -44,8 +48,13 @@ public class GameScoreHistoryActivity extends AppCompatActivity {
 
     private void displaySavedGames() {
         adapter = new GameScoreHistoryAdapter(viewModel.getSavedGameScore());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        if (adapter.getItemCount() == 0) {
+            noHistory.setVisibility(View.VISIBLE);
+        } else {
+
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            recyclerView.setAdapter(adapter);
+        }
 
     }
 
@@ -62,6 +71,7 @@ public class GameScoreHistoryActivity extends AppCompatActivity {
         if (id == R.id.item_clear) {
             viewModel.clearGameScoreHistory();
             recyclerView.setVisibility(View.INVISIBLE);
+            noHistory.setVisibility(View.VISIBLE);
 
             Toast.makeText(this, "All games deleted", Toast.LENGTH_SHORT).show();
         }

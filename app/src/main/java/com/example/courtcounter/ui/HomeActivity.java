@@ -14,6 +14,7 @@ public class HomeActivity extends AppCompatActivity {
     private EditText teamAName;
     private EditText teamBName;
     private Button startGame;
+    private Button gameHistory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
 
         bindViews();
         start();
+        openGameScoreHistory();
 
     }
 
@@ -29,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
         teamAName = findViewById(R.id.editTextText_teamA);
         teamBName = findViewById(R.id.editText_teamB);
         startGame = findViewById(R.id.button_start);
+        gameHistory = findViewById(R.id.button_game_home_history);
     }
 
     private void start() {
@@ -46,8 +49,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
                 teamAName.setText("");
                 teamBName.setText("");
+                teamAName.requestFocus();
             }
 
+        });
+    }
+
+    private void openGameScoreHistory() {
+        gameHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(this, GameScoreHistoryActivity.class);
+            startActivity(intent);
         });
     }
 }

@@ -1,7 +1,6 @@
 package com.example.courtcounter.ui;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView teamBName;
     private MainViewModel viewModel;
     private Button reset;
-    private AlertDialog alertDialog;
     private TextView gameDate;
     private GamesScoreKeeper gamesScoreKeeper = null;
 
@@ -104,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item_exit:
                 finish();
                 break;
-            case R.id.item_history:
-                openGameScoreHistory();
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -125,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Save Game Score?");
         builder.setTitle("Exit Game");
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 saveScore();
@@ -144,10 +139,6 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private void openGameScoreHistory() {
-        Intent intent = new Intent(this, GameScoreHistoryActivity.class);
-        startActivity(intent);
-    }
 
     private GamesScoreKeeper saveScore() {
         gamesScoreKeeper = new GamesScoreKeeper();
@@ -229,7 +220,6 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.button_reset:
                     button.setOnClickListener(v -> {
-                        // resetGame();
                         reset();
 
                     });
@@ -249,6 +239,7 @@ public class MainActivity extends AppCompatActivity {
         int resetB = viewModel.sumB = 0;
         teamAScore.setText(String.valueOf(resetA));
         teamBScore.setText(String.valueOf(resetB));
+        initializeScore();
     }
 
 

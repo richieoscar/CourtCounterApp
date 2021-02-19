@@ -161,7 +161,8 @@ public class MainActivity extends AppCompatActivity {
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d");
         String gameDay = dateFormat.format(date);
-        gameDate.setText(gameDay.toUpperCase() + getString(R.string.play_offs).toUpperCase());
+        gameDate.setText(gameDay.toUpperCase() + "  " + getString(R.string.play_offs).toUpperCase());
+
 
     }
 

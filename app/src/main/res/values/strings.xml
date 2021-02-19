@@ -6,7 +6,7 @@
     <string name="no">No</string>
     <string name="game_score_saved">Game Score Saved</string>
     <string name="game_already_saved">Game Already Saved</string>
-    <string name="play_offs">\"   PlayOffs\"</string>
+    <string name="play_offs">PlayOffs</string>
     <string name="reset">Reset</string>
     <string name="zero">0</string>
     <string name="three_points">3 Points</string>

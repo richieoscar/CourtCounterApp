@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/button_reset"
-        android:layout_width="155dp"
+        android:layout_width="250dp"
         android:layout_height="58dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/zero"
         android:textColor="#774906"
-        android:textSize="60sp"
+        android:textSize="100sp"
         android:visibility="visible"
         app:layout_constraintEnd_toStartOf="@+id/view3"
         app:layout_constraintHorizontal_bias="0.294"
@@ -38,8 +38,8 @@
 
     <Button
         android:id="@+id/button_team_b_three_points"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
@@ -52,8 +52,8 @@
 
     <Button
         android:id="@+id/button_team_b_two_points"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -66,8 +66,8 @@
 
     <Button
         android:id="@+id/button_team_b_free_throw"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -80,8 +80,8 @@
 
     <Button
         android:id="@+id/button_team_a_three_points"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
@@ -95,8 +95,8 @@
 
     <Button
         android:id="@+id/button_team_a_two_points"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -109,8 +109,8 @@
 
     <Button
         android:id="@+id/button_team_a_free_throw"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -126,11 +126,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/zero"
         android:textColor="#774906"
-        android:textSize="60sp"
+        android:textSize="100sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/view3"
         app:layout_constraintTop_toBottomOf="@+id/textView_team_b_name" />
 
@@ -139,15 +140,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="16dp"
         android:text="@string/team_a"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toStartOf="@+id/view3"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.318"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_game_date" />
 
@@ -156,15 +157,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="60dp"
         android:text="@string/team_b"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toEndOf="@+id/view3"
         app:layout_constraintTop_toBottomOf="@+id/textView_game_date" />
 
@@ -189,7 +190,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="#774906"
-        android:textSize="24sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

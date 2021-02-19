@@ -47,17 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
         bindViews();
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
-        initializeScore();
         handleIntent();
         clickOptions();
         displayGameDate();
+        displayScore();
 
 
-    }
-
-    private void initializeScore() {
-        teamAScore.setText(String.valueOf(viewModel.scoreForTeamA));
-        teamBScore.setText(String.valueOf(viewModel.scoreForTeamB));
     }
 
     private void handleIntent() {
@@ -100,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 saveScore();
                 break;
             case R.id.item_exit:
-                finish();
+                saveOnExit();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -118,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveOnExit() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Save Game Score?");
-        builder.setTitle("Exit Game");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.save_game_score);
+        builder.setTitle(R.string.exit_game);
+        builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 saveScore();
@@ -128,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
@@ -141,19 +136,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     private GamesScoreKeeper saveScore() {
-        gamesScoreKeeper = new GamesScoreKeeper();
-        gamesScoreKeeper.setGameId(viewModel.generateId());
-        gamesScoreKeeper.setTeamAName(teamAName.getText().toString());
-        gamesScoreKeeper.setTeamBName(teamBName.getText().toString());
+        if (gamesScoreKeeper == null) {
+            gamesScoreKeeper = new GamesScoreKeeper();
+            gamesScoreKeeper.setGameId(viewModel.generateId());
+            gamesScoreKeeper.setTeamAName(teamAName.getText().toString());
+            gamesScoreKeeper.setTeamBName(teamBName.getText().toString());
 
-        int scoreA = Integer.parseInt(teamAScore.getText().toString());
-        int scoreB = Integer.parseInt(teamBScore.getText().toString());
-        gamesScoreKeeper.setTeamAScore(scoreA);
-        gamesScoreKeeper.setTeamBScore(scoreB);
-        gamesScoreKeeper.setGameDate(gameDate.getText().toString());
+            int scoreA = Integer.parseInt(teamAScore.getText().toString());
+            int scoreB = Integer.parseInt(teamBScore.getText().toString());
+            gamesScoreKeeper.setTeamAScore(scoreA);
+            gamesScoreKeeper.setTeamBScore(scoreB);
+            gamesScoreKeeper.setGameDate(gameDate.getText().toString());
 
-        viewModel.saveGameScore(gamesScoreKeeper);
-        Toast.makeText(this, "Game Score Saved", Toast.LENGTH_SHORT).show();
+            viewModel.saveGameScore(gamesScoreKeeper);
+            Toast.makeText(this, getString(R.string.game_score_saved), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, getString(R.string.game_already_saved), Toast.LENGTH_SHORT).show();
+        }
         return gamesScoreKeeper;
     }
 
@@ -162,10 +161,11 @@ public class MainActivity extends AppCompatActivity {
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MMM d");
         String gameDay = dateFormat.format(date);
-        gameDate.setText(gameDay.toUpperCase() + "   PlayOffs".toUpperCase());
+        gameDate.setText(gameDay.toUpperCase() + getString(R.string.play_offs).toUpperCase());
 
     }
 
+    //buttons to increment score board
     private void clickOptions() {
         ArrayList<Button> pointButtons = new ArrayList<>();
         pointButtons.add(teamAThreePoints);
@@ -234,12 +234,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*
+    Displays score on screen
+     */
+    private void displayScore() {
+        teamAScore.setText(String.valueOf(viewModel.sumA));
+        teamBScore.setText(String.valueOf(viewModel.sumB));
+    }
+
+    //resets score
     private void reset() {
         int resetA = viewModel.sumA = 0;
         int resetB = viewModel.sumB = 0;
         teamAScore.setText(String.valueOf(resetA));
         teamBScore.setText(String.valueOf(resetB));
-        initializeScore();
+        gamesScoreKeeper = null;
+
     }
 
 

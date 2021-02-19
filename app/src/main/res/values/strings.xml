@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Court Counter</string>
+    <string name="save_game_score">Save Game Score?</string>
+    <string name="exit_game">Exit Game</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="game_score_saved">Game Score Saved</string>
+    <string name="game_already_saved">Game Already Saved</string>
+    <string name="play_offs">\"   PlayOffs\"</string>
+    <string name="reset">Reset</string>
+    <string name="zero">0</string>
+    <string name="three_points">3 Points</string>
+    <string name="two_points">2 Points</string>
+    <string name="free_throw">Free Throw</string>
+    <string name="team_a">Team A</string>
+    <string name="team_b">Team B</string>
+    <string name="enter_team_name">Enter Team Name</string>
+    <string name="start_game">Start Game</string>
+    <string name="view_history">View History</string>
+    <string name="court_counter">Court Counter</string>
 </resources>
